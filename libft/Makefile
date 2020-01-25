@@ -5,40 +5,50 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arkim <arkim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/07/22 20:40:49 by arkim             #+#    #+#              #
-#    Updated: 2019/09/05 20:50:14 by arkim            ###   ########.fr        #
+#    Created: 2019/08/17 16:46:43 by arkim             #+#    #+#              #
+#    Updated: 2019/10/30 18:21:23 by arkim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-SRCS	= 	$(wildcard *.c)
-OBJS	=	$(SRCS:.c=.o)
-
-GREEN	=	\033[0;32m
-RED		=	\033[0;31m
-RESET	=	\033[0m
-CHECK	=	\033[0;33m\xE2\x9C\x94\033[0m
-
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
+
+DIR_S	=	./srcs/
+DIR_O	=	./objs/
+DIR_I	=	./includes/
+
+SRCS	=	$(wildcard $(DIR_S)*.c)
+OBJS	=	$(addprefix $(DIR_O), $(notdir $(SRCS:.c=.o)))
+
+GR		=	\033[0;32m
+RD		=	\033[0;31m
+YE		=	\033[0;33m
+PU		=	\033[1;35m
+EOC		=	\033[0m
+CHECK	=	$(GR)\xE2\x9C\x94$(EOC)
+BOLD	=	\033[1m
+ITALIC	=	\033[3m
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "\r $(CHECK)$(GREEN)      Libft has been compiled! (100/100%)"
+	@echo "\n\033[K$(EOC)\t[ $(CHECK) ]$(YE)  LIBFT :  $(GR)Compiled$(EOC)"
 
-$(OBJS) :
-	@echo "\n$(RED)         Compiling Libft    .....\c"
-	@$(CC) $(CFLAGS) -c $(SRCS)
+$(DIR_O)%.o: $(DIR_S)%.c $(DIR_I)
+	@mkdir -p $(DIR_O)
+	@echo "\n\033[K\033[K$(EOC)\t[   ]$(YE)  LIBFT :  $(GR)Compiling  $(ITALIC)$<$(EOC)\033[2A";
+	@$(CC) $(CFLAGS) -I $(DIR_I) -o $@ -c $<
 
 clean :
-	@/bin/rm -rf $(OBJS)
+	@/bin/rm -rf $(DIR_O)
 
 fclean : clean
 	@/bin/rm -f $(NAME)
+	@echo "\n\033[K$(EOC)\t[ $(CHECK) ]$(YE)  LIBFT :  $(GR)Removed$(EOC)"
 
 re : fclean all
 

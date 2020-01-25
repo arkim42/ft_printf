@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   num_util2.c                                        :+:      :+:    :+:   */
+/*   numbers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arkim <arkim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 00:13:52 by arkim             #+#    #+#             */
-/*   Updated: 2019/10/17 03:40:24 by arkim            ###   ########.fr       */
+/*   Updated: 2020/01/24 22:18:40 by arkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void			pf_num_aux(t_pf *p, int64_t n, int *sign, int *padd)
 		- ((p->f & F_HASH && !(p->f & F_PREC) && !n && p->c & C_O) ? 1 : 0) \
 		+ (((n && p->f & F_HASH && p->c & (C_X | C_B)) || p->c & C_P) ? 2 : 0);
 	padd[0] = ((p->prec_w > p->cur_len) ? (p->prec_w - p->cur_len) : 0);
-	padd[1] = ((p->w > (FT_MAX(p->cur_len, p->prec_w))) ? \
-			(p->w - (FT_MAX(p->cur_len, p->prec_w))) : 0) - *sign - padd[2];
+	padd[1] = ((p->w > (ft_max(p->cur_len, p->prec_w))) ? \
+			(p->w - (ft_max(p->cur_len, p->prec_w))) : 0) - *sign - padd[2];
 }
 
 void				pf_numbers(t_pf *p, int64_t n)

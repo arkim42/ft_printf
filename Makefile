@@ -6,7 +6,7 @@
 #    By: arkim <arkim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/17 16:46:43 by arkim             #+#    #+#              #
-#    Updated: 2019/10/25 17:45:21 by arkim            ###   ########.fr        #
+#    Updated: 2020/01/24 22:42:00 by arkim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,19 +17,19 @@ CFLAGS		=	-Wall -Wextra -Werror
 LIB_FT_DIR	=	./libft/
 LIB_FT_LNK	=	-L libft -lft
 
-DIR_S	=	./srcs/
-DIR_O	=	./objs/
-DIR_I	=	./includes/
+DIR_S		=	./srcs/
+DIR_O		=	./objs/
+DIR_I		=	./includes/
 
 SRCS		=	$(wildcard $(DIR_S)*.c)
 OBJS		=	$(addprefix $(DIR_O), $(notdir $(SRCS:.c=.o)))
 
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
-CHECK = \033[0;33m\xE2\x9C\x94\033[0m
-PINK = \033[0;1;35m
-YELLOW = \033[0;33m
+GREEN		= \033[0;32m
+RED			= \033[0;31m
+RESET		= \033[0m
+CHECK		=	\033[0;33m\xE2\x9C\x94\033[0m
+PINK		=	\033[0;1;35m
+YELLOW		=	\033[0;33m
 
 all: $(NAME)
 
@@ -45,12 +45,20 @@ $(DIR_O)%.o: $(DIR_S)%.c $(DIR_I)ft_printf.h
 	@$(CC) $(CFLAGS) -I $(DIR_I) -o $@ -c $<
 
 gccW:
-	@$(CC) $(CFLAGS) main.c $(SRCS) $(LIB_FT_DIR)*.c -I $(DIR_I)
+	@$(CC) $(CFLAGS) main.c $(SRCS) $(LIB_FT_DIR)/srcs/*.c -I $(DIR_I) -I $(LIB_FT_DIR)includes/
 	@echo "\n $(CHECK)$(PINK)	Finished !!"
 
 gcc:
-	@$(CC) $(SRCS) main.c $(LIB_FT_DIR)*.c -I $(DIR_I)
+	@$(CC) $(SRCS) main.c $(LIB_FT_DIR)srcs/*.c -I $(DIR_I) -I $(LIB_FT_DIR)includes/
 	@echo "\n $(CHECK)$(PINK)	Finished !!"
+
+
+norm:
+	norminette $(LIB_FT_DIR)
+	@echo
+	norminette $(DIR_I)
+	@echo
+	norminette $(DIR_S)
 
 clean:
 	@rm -f $(OBJS)

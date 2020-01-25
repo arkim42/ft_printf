@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arkim <arkim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/08 16:51:54 by arkim             #+#    #+#             */
-/*   Updated: 2019/09/05 21:34:37 by arkim            ###   ########.fr       */
+/*   Created: 2019/07/25 19:46:41 by arkim             #+#    #+#             */
+/*   Updated: 2019/10/30 17:10:31 by arkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <fcntl.h>
-
-# include <stdio.h>
-
-# include "libft.h"
-
-# define BUFF_SIZE 32
-# define MAX_FD 4096
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+int			ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}

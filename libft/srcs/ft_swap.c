@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arkim <arkim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/23 17:44:58 by arkim             #+#    #+#             */
-/*   Updated: 2019/08/08 01:19:26 by arkim            ###   ########.fr       */
+/*   Created: 2019/08/08 00:36:11 by arkim             #+#    #+#             */
+/*   Updated: 2019/10/30 18:04:29 by arkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_isalnum(int c)
+void				ft_swap(void *a, void *b, size_t n)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (1);
-	return (0);
+	void		*t;
+
+	t = malloc(n);
+	ft_memcpy(t, a, n);
+	ft_memcpy(a, b, n);
+	ft_memcpy(b, t, n);
+	free(t);
 }

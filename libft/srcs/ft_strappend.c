@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strappend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arkim <arkim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/23 18:07:12 by arkim             #+#    #+#             */
-/*   Updated: 2019/08/08 01:28:41 by arkim            ###   ########.fr       */
+/*   Created: 2019/10/20 20:12:22 by arkim             #+#    #+#             */
+/*   Updated: 2019/10/22 21:06:14 by arkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_isascii(int c)
+char			*ft_strappend(char const *s1, char const *s2, int n1, int n2)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	char		*res;
+
+	res = ft_strjoin(s1, s2);
+	if (n1 && s1)
+		free((void *)s1);
+	if (n2 && s2)
+		free((void *)s2);
+	return (res);
 }

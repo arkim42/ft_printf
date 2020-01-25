@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   put_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arkim <arkim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 01:27:05 by arkim             #+#    #+#             */
-/*   Updated: 2019/10/20 01:23:39 by arkim            ###   ########.fr       */
+/*   Updated: 2020/01/24 22:56:42 by arkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void				pf_put_scinum(long double n, t_pf *p)
 	pf_put_dbl(decimal, p);
 	if (p->c & C_E)
 		(p->c & C_UPCASE) ? write(p->fd, "E", 1) : write(p->fd, "e", 1);
-	(FT_ABS(n) >= 10 || !decimal) ? write(p->fd, "+", 1) : write(p->fd, "-", 1);
+	(ft_abs(n) >= 10 || !decimal) ? write(p->fd, "+", 1) : write(p->fd, "-", 1);
 	(i < 10) ? write(p->fd, "0", 1) : write(p->fd, "", 0);
 	ft_putnbr(i);
 	p->len += 4;

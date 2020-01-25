@@ -6,14 +6,14 @@
 /*   By: arkim <arkim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 19:05:14 by arkim             #+#    #+#             */
-/*   Updated: 2019/10/20 01:52:39 by arkim            ###   ########.fr       */
+/*   Updated: 2020/01/24 22:27:40 by arkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
@@ -21,9 +21,6 @@
 # include <stdio.h>
 # include <limits.h>
 
-# define FT_ABS(A)			((A) < 0) ? (-A) : (A)
-# define FT_MAX(A, B)		((A) >= (B)) ? (A) : (B)
-# define FT_MIN(A, B)		((A) <= (B)) ? (A) : (B)
 # define STR_NULL			"(null)"
 
 /*
@@ -31,36 +28,36 @@
 */
 
 # define FLAGS			"-+ 0#*$'"
-# define F_MINUS		(1 << 0)
-# define F_PLUS			(1 << 1)
-# define F_SPACE		(1 << 2)
-# define F_ZERO			(1 << 3)
-# define F_HASH			(1 << 4)
-# define F_ASTERISK		(1 << 5)
-# define F_DOLLAR		(1 << 6)
-# define F_APOSTROPHE	(1 << 7)
+# define F_MINUS		0x000001
+# define F_PLUS			0x000002
+# define F_SPACE		0x000004
+# define F_ZERO			0x000008
+# define F_HASH			0x000010
+# define F_ASTERISK		0x000020
+# define F_DOLLAR		0x000040
+# define F_APOSTROPHE	0x000080
 
 /*
 **						specifier: length
 */
 
 # define LEN_MODIF		"hljtzL"
-# define F_H			(1 << 11)
-# define F_L			(1 << 12)
-# define F_J			(1 << 13)
-# define F_T			(1 << 14)
-# define F_Z			(1 << 15)
-# define F_UL			(1 << 16)
-# define F_HH			(1 << 17)
-# define F_LL			(1 << 18)
+# define F_H			0x000800
+# define F_L			0x001000
+# define F_J			0x002000
+# define F_T			0x004000
+# define F_Z			0x008000
+# define F_UL			0x010000
+# define F_HH			0x020000
+# define F_LL			0x040000
 
 /*
 **						bonus
 */
 
-# define F_WIDTH		(1 << 8)
-# define F_PREC			(1 << 9)
-# define F_PREC_STAR	(1 << 10)
+# define F_WIDTH		0x000100
+# define F_PREC			0x000200
+# define F_PREC_STAR	0x000400
 
 /*
 **						CONV specifiers
@@ -68,26 +65,26 @@
 
 # define CONV			"diouxfegacspnbrk%"
 # define CONV2			"DIOUXFEGACSPNBRK"
-# define C_UPCASE		(1 << 0)
-# define C_D			(1 << 1)
-# define C_I			(1 << 2)
-# define C_O			(1 << 3)
-# define C_U			(1 << 4)
-# define C_X			(1 << 5)
-# define C_F			(1 << 6)
-# define C_E			(1 << 7)
-# define C_G			(1 << 8)
-# define C_A			(1 << 9)
-# define C_C			(1 << 10)
-# define C_S			(1 << 11)
-# define C_P			(1 << 12)
-# define C_N			(1 << 13)
-# define C_B			(1 << 14)
-# define C_R			(1 << 15)
-# define C_K			(1 << 16)
-# define C_PER			(1 << 17)
-# define C_INT			(C_D | C_I)
-# define C_UINT			(C_O | C_U | C_X | C_B)
+# define C_UPCASE		0x000001
+# define C_D			0x000002
+# define C_I			0x000004
+# define C_O			0x000008
+# define C_U			0x000010
+# define C_X			0x000020
+# define C_F			0x000040
+# define C_E			0x000080
+# define C_G			0x000100
+# define C_A			0x000200
+# define C_C			0x000400
+# define C_S			0x000800
+# define C_P			0x001000
+# define C_N			0x002000
+# define C_B			0x004000
+# define C_R			0x008000
+# define C_K			0x010000
+# define C_PER			0x020000
+# define C_INT			0x000006
+# define C_UINT			0x004038
 
 /*
 **		fmt : format string		|	prec_w  : precision width

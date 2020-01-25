@@ -6,7 +6,7 @@
 /*   By: arkim <arkim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 00:18:13 by arkim             #+#    #+#             */
-/*   Updated: 2019/10/25 17:32:22 by arkim            ###   ########.fr       */
+/*   Updated: 2020/01/24 22:20:53 by arkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void				pf_put_char(t_pf *p)
 	unsigned char	c;
 	int				padding;
 
-	padding = FT_MAX(p->w - 1, 0);
+	padding = ft_max(p->w - 1, 0);
 	if (!(p->f & F_MINUS) && padding > 0)
 		(p->f & F_ZERO) ? ft_nputchar_fd('0', padding, p->fd) \
 							: ft_nputchar_fd(' ', padding, p->fd);
@@ -53,7 +53,7 @@ void				pf_put_char(t_pf *p)
 	write(p->fd, &c, 1);
 	if (p->f & F_MINUS && padding > 0)
 		ft_nputchar_fd(' ', padding, p->fd);
-	p->len += FT_MAX(p->w, 1);
+	p->len += ft_max(p->w, 1);
 }
 
 void				pf_put_str(t_pf *p)
@@ -68,8 +68,8 @@ void				pf_put_str(t_pf *p)
 	if (!ft_strcmp(str, ""))
 		str = "";
 	len = (int)ft_strlen(str);
-	p->cur_len = (p->f & F_PREC) ? FT_MIN(p->prec_w, len) : len;
-	padding = FT_MAX(p->w - p->cur_len, 0);
+	p->cur_len = (p->f & F_PREC) ? ft_min(p->prec_w, len) : len;
+	padding = ft_max(p->w - p->cur_len, 0);
 	if (!(p->f & F_MINUS) && padding > 0)
 		(p->f & F_ZERO) ? ft_nputchar_fd('0', padding, p->fd) \
 							: ft_nputchar_fd(' ', padding, p->fd);
