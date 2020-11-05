@@ -31,7 +31,7 @@ make
 | `E` | Scientific notation (mantissa/exponent), uppercase |
 | `b` | Binary integer |
     
-| specifier \ <br> length | `d`, `i` | `u`, `o`, `x`, `X` | `f` `e` `E` `b` | `c` | `s` | `p` |
+| specifier \ <br> length | `d`, `i` | `u`, `o`, `x`, `X` | `f`, `e`, `E`, `b` | `c` | `s` | `p` |
 |:-------:|:----------:|:--------------------:|:-----------------:|-----:|-----:|:-----:|
 | *none* | int | unsigned int | double | int | char * | void *  |  |
 |  `hh`  | signed char | unsigned char |  |  |  |  |  |
